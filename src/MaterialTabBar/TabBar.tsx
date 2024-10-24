@@ -221,14 +221,13 @@ const MaterialTabBar = <T extends TabName = TabName>({
           />
         )
       })}
-      {itemsLayout.length === nTabs && (
+     
         <Indicator
           indexDecimal={indexDecimal}
           itemsLayout={itemsLayout}
-          fadeIn={scrollEnabled}
           style={indicatorStyle}
         />
-      )}
+
     </Animated.ScrollView>
   )
 }
