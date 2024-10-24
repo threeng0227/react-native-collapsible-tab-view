@@ -18,65 +18,7 @@ import { Lazy } from './Lazy'
 import { MaterialTabBar, TABBAR_HEIGHT } from './MaterialTabBar'
 import { Tab } from './Tab'
 import { IS_IOS, ONE_FRAME_MS, scrollToImpl } from './helpers'
-import {import React from 'react'
-  import { StyleSheet } from 'react-native'
-  import Animated, {
-    useAnimatedStyle,
-    interpolate,
-  } from 'react-native-reanimated'
-  
-  import { IndicatorProps } from './types'
-  import { isRTL } from '../helpers'
-  
-  const Indicator: React.FC<IndicatorProps> = ({
-    indexDecimal,
-    itemsLayout,
-    style,
-  }) => {
-  
-  
-    const stylez = useAnimatedStyle(() => {
-      const firstItemX = itemsLayout[0]?.x ?? 0
-  
-      const transform = [
-        {
-          translateX:
-            itemsLayout.length > 1
-              ? interpolate(
-                  indexDecimal.value,
-                  itemsLayout.map((_, i) => i),
-                  // when in RTL mode, the X value should be inverted
-                  itemsLayout.map((v) => (isRTL ? -1 * v.x : v.x))
-                )
-              : isRTL
-                ? -1 * firstItemX
-                : firstItemX,
-        },
-      ]
-  
-   
-      return {
-        transform,
-      }
-    }, [indexDecimal, itemsLayout])
-  
-   
-  
-    return <Animated.View style={[stylez, styles.indicator, style]} />
-  }
-  
-  const styles = StyleSheet.create({
-    indicator: {
-      height: 2,
-      backgroundColor: '#2196f3',
-      position: 'absolute',
-      bottom: 0,
-  
-    },
-  })
-  
-  export { Indicator }
-  
+import {
   useAnimatedDynamicRefs,
   useContainerRef,
   usePageScrollHandler,
@@ -353,13 +295,14 @@ export const Container = React.memo(
           const i = tabNames.value.findIndex((n) => n === name)
 
           if (name === focusedTab.value) {
-            const ref = refMap[name]
-            runOnUI(scrollToImpl)(
-              ref,
-              0,
-              headerScrollDistance.value - contentInset,
-              true
-            )
+            // const ref = refMap[name]
+            // runOnUI(scrollToImpl)(
+            //   ref,
+            //   0,
+            //   headerScrollDistance.value - contentInset,
+            //   true
+            // )
+            return;
           } else {
             containerRef.current?.setPage(i)
           }
