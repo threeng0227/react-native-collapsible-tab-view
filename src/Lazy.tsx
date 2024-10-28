@@ -127,8 +127,7 @@ export const Lazy: React.FC<{
     didTriggerLayout.value = true
   }, [didTriggerLayout])
 
-  return canMount ? (
-    cancelLazyFadeIn ? (
+  return cancelLazyFadeIn ? (
       children
     ) : (
       <Animated.View
@@ -139,9 +138,7 @@ export const Lazy: React.FC<{
         {children}
       </Animated.View>
     )
-  ) : (
-    <ScrollView />
-  )
+  
 }
 
 const styles = StyleSheet.create({
