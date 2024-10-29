@@ -99,9 +99,9 @@ export const Container = React.memo(
       //   !renderHeader ? 0 : initialHeaderHeight
       // )
     
-      const tabBarHeight = initialTabBarHeight
+      const tabBarHeight = initialTabBarHeight || 0;
 
-      const headerHeight = initialHeaderHeight
+      const headerHeight = initialHeaderHeight || 0;
       
       const initialIndex = React.useMemo(
         () =>
