@@ -92,12 +92,17 @@ export const Container = React.memo(
 
       const [containerHeight, getContainerLayoutHeight] = useLayoutHeight()
 
-      const [tabBarHeight, getTabBarHeight] =
-        useLayoutHeight(initialTabBarHeight)
+      // const [tabBarHeight, getTabBarHeight] =
+      //   useLayoutHeight(initialTabBarHeight)
 
-      const [headerHeight, getHeaderHeight] = useLayoutHeight(
-        !renderHeader ? 0 : initialHeaderHeight
-      )
+      // const [headerHeight, getHeaderHeight] = useLayoutHeight(
+      //   !renderHeader ? 0 : initialHeaderHeight
+      // )
+    
+      const tabBarHeight = initialTabBarHeight
+
+      const headerHeight = initialHeaderHeight
+      
       const initialIndex = React.useMemo(
         () =>
           initialTabName
