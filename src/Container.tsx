@@ -3,7 +3,6 @@ import { StyleSheet, useWindowDimensions, View } from 'react-native'
 import PagerView from 'react-native-pager-view'
 import Animated, {
   runOnJS,
-  runOnUI,
   useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
@@ -78,6 +77,7 @@ export const Container = React.memo(
         onTabChange,
         width: customWidth,
         allowHeaderOverscroll,
+        loading
       },
       ref
     ) => {
@@ -378,6 +378,7 @@ export const Container = React.memo(
             headerTranslateY,
             width,
             allowHeaderOverscroll,
+            
           }}
         >
           <Animated.View
@@ -395,7 +396,7 @@ export const Container = React.memo(
             >
               <View
                 style={[styles.container, styles.headerContainer]}
-                onLayout={getHeaderHeight}
+                // onLayout={getHeaderHeight}
                 pointerEvents="box-none"
               >
                 {renderHeader &&
@@ -411,7 +412,7 @@ export const Container = React.memo(
               </View>
               <View
                 style={[styles.container, styles.tabBarContainer]}
-                onLayout={getTabBarHeight}
+                // onLayout={getTabBarHeight}
                 pointerEvents="box-none"
               >
                 {renderTabBar &&
@@ -437,13 +438,14 @@ export const Container = React.memo(
             >
               {tabNamesArray.map((tabName, i) => {
                 return (
-                  <View key={i}>
+                  <View key={`tabNamesArray${i}${tabName}`}>
                     <TabNameContext.Provider value={tabName}>
                       <Lazy
                         startMounted={lazy ? undefined : true}
                         cancelLazyFadeIn={!lazy ? true : !!cancelLazyFadeIn}
                         // ensure that we remount the tab if its name changes but the index doesn't
                         key={tabName}
+                        loading={loading}
                       >
                         {
                           React.Children.toArray(children)[

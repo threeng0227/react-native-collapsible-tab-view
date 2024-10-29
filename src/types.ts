@@ -132,6 +132,7 @@ export type CollapsibleProps = {
    * @default false
    */
   allowHeaderOverscroll?: boolean
+  loading?: boolean;
 }
 
 export type ContextType<T extends TabName = TabName> = {
@@ -221,7 +222,6 @@ export type ContextType<T extends TabName = TabName> = {
    * @default false
    */
   allowHeaderOverscroll?: boolean
-
   minHeaderHeight: number
 }
 

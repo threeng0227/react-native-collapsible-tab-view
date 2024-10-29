@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { StyleSheet } from 'react-native'
+import { ActivityIndicator, StyleSheet } from 'react-native'
 import Animated, {
   useSharedValue,
   useAnimatedReaction,
@@ -28,11 +28,13 @@ export const Lazy: React.FC<{
    */
   startMounted?: boolean
   children: React.ReactElement
+  loading?: boolean
 }> = ({
   children,
   cancelLazyFadeIn,
   startMounted: _startMounted,
   mountDelayMs = 50,
+  loading = false
 }) => {
   const name = useTabNameContext()
   const { focusedTab, refMap } = useTabsContext()
@@ -140,7 +142,9 @@ export const Lazy: React.FC<{
       </Animated.View>
     )
   ) : (
-    <ScrollView />
+    <ScrollView>
+      {!!loading && <ActivityIndicator  size={'small'} />}
+      </ScrollView>
   )
 }
 
