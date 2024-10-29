@@ -143,7 +143,7 @@ export const Lazy: React.FC<{
     )
   ) : (
     <ScrollView>
-      {!!loading && <ActivityIndicator  size={'small'} />}
+      {!!loading && <ActivityIndicator  size={'small'} color={'#004FFF'}/>}
       </ScrollView>
   )
 }
